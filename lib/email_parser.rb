@@ -5,19 +5,17 @@
 class EmailParser
   attr_accessor :list
 
-  @@all = []
-
   def initialize(emails)
     @list = emails
   end
 
   def parse
-    @list.scan(/\S*[@]\S*[.][a-zA-Z]*/).each do |email|
-      if !@@all.include?(email)
-        @@all << email
-      end
+    parsed_list = @list.scan(/\S*[@]\S*[.][a-zA-Z]*/)
+    final_list
+    parsed_list.each do |email|
+      final_list << email if parsed_list.count(email) == 1
     end
-    @@all
+    final_list
   end
 
 end
