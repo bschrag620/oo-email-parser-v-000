@@ -11,7 +11,7 @@ class EmailParser
     @list = emails
   end
 
-  def self.parse
+  def parse
     @list.scan(/\S*[@]\S*[.][a-zA-Z]*/).each do |email|
       if !@@all.include?(email)
         @@all << email
