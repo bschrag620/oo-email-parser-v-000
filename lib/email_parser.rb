@@ -11,7 +11,7 @@ class EmailParser
 
   def parse
     parsed_list = @list.scan(/\S*[@]\S*[.][a-zA-Z]*/)
-    final_list
+    final_list = []
     parsed_list.each do |email|
       final_list << email if parsed_list.count(email) == 1
     end
